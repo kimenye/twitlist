@@ -1,3 +1,28 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  background: #222438;
+  text-align: center;
+}
+
+.spacer {
+  margin-top: 50px;
+}
+
+.logo h1,{
+
+}
+
+
+
+.home h1 {
+  font-family: 'Bowlby One SC',"Arial Black",Gadget,sans-serif;
+  font-weight: normal;
+  //margin: 0;
+  text-transform: uppercase;
+  color: #FFB000;
+  text-shadow: 0 2px 1px #000;
+  line-height: 1;
+}
