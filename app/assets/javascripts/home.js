@@ -5,5 +5,5 @@
 $(document).ready(function() {
     $('#title').lettering();
 
-    var scrollorama = $.scrollorama({ blocks:'.scrollblock', enablePin:false });
+//    var scrollorama = $.scrollorama({ blocks:'.scrollblock', enablePin:false });
 })
