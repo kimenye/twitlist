@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
-      %title= content_for?(:title) ? yield(:title) : "Comme ci, comme ça"
+      %title= content_for?(:title) ? yield(:title) : t(:app_name)
 
       -#<link href='http://fonts.googleapis.com/css?family=Bowlby+One+SC' rel='stylesheet' type='text/css'>
       %link{:href=> "http://fonts.googleapis.com/css?family=Bowlby+One+SC", :rel=>'stylesheet',:type=>'text/css'}
