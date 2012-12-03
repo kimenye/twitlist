@@ -26,3 +26,5 @@ gem "quiet_assets", ">= 1.0.1", :group => :development
 gem "hub", ">= 1.10.2", :require => nil, :group => [:development]
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'pry'
+gem 'pry-nav'

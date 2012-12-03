@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body.home {
-  background: #222438;
+  //background: #222438;
   text-align: center;
 }
 
@@ -15,8 +15,6 @@ body.home {
 
 }
 
-
-
 .home h1 {
   font-family: 'Bowlby One SC',"Arial Black",Gadget,sans-serif;
   font-weight: normal;
@@ -25,4 +23,12 @@ body.home {
   color: #FFB000;
   text-shadow: 0 2px 1px #000;
   line-height: 1;
+}
+
+.play .content {
+  text-align: left;
+}
+
+.current_user {
+  text-align: right;
 }
