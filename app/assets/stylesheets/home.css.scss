@@ -25,6 +25,11 @@ body.home {
   line-height: 1;
 }
 
+a.imglink:hover {
+  text-decoration: no-underline;
+  background-color: #ffffff;
+}
+
 .play .content {
   text-align: left;
 }

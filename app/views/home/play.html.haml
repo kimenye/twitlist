@@ -16,12 +16,18 @@
   .six.columns.centered
     %dl.tabs.contained
       %dt
-        %p.subheader.current_user
-          = link_to('Logout', destroy_user_session_path, :method => :delete)
+        = link_to('Logout', destroy_user_session_path, :method => :delete)
       %dd.active
         %a Tweeps
     %ul.tabs-content.contained
       %li.active
+        %p.subheader
+          =t :app_name
+          is more fun with your
+          = @followers_count
+          tweeps. Invite some...
+
+
 -#.row
   .six.columns.centered
     %ul.accordion

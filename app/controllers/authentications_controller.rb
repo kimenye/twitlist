@@ -41,19 +41,26 @@ class AuthenticationsController < Devise::OmniauthCallbacksController
     authentication = Authentication.where(:provider => omniauth['provider'], :uid => omniauth['uid']).first
     if authentication
       flash[:notice] = t(:signed_in)
+      save_to_session(omniauth)
       sign_in_and_redirect(:user, authentication.user)
     elsif current_user
       current_user.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'])
       flash[:notice] = t(:success)
+      save_to_session(omniauth)
       redirect_to authentications_url
     elsif user = create_new_omniauth_user(omniauth)
       user.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'])
       flash[:notice] = t(:welcome)
+      save_to_session(omniauth)
       sign_in_and_redirect(:user, user)
     else
       flash[:alert] = t(:fail)
       redirect_to new_user_registration_url
     end
+  end
+
+  def save_to_session(omniauth)
+    session[:credentials] = omniauth[:credentials]
   end
 
   def create_new_omniauth_user(omniauth)
