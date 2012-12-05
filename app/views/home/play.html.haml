@@ -14,71 +14,54 @@
           = link_to('Logout', destroy_user_session_path, :method => :delete)
 .row
   .six.columns.centered
-    .row
-      .twelve.columns
-        %h4.subheader
-          1. Choose an opponent
-    .row
-      .twelve.columns
-        .row.collapse
-          .twelve.columns.centered
-            %a.button Random
-        .row.spacer
-          .twelve.columns.centered
-            %br
-            or
-            %br
-            %br
-        .row.collapse.spacer
-          .two.mobile-one.columns
-            %span.prefix @
-          .eight.mobile-two.columns
-            %input{:type => "text"}
-          .two.mobile-one.columns
-            %a.button.expand.postfix Search
-    .row
-      .twelve.columns
-        %h4.subheader
-          2. Fight!
-    -#%dl.tabs.contained
-      %dt
-        = link_to('Logout', destroy_user_session_path, :method => :delete)
-      -#%dd
-        %a{:href => "#tweeps"} Tweeps
-      %dd.active
-        %a{:href => "#challenge"} Challenge
-    -#%ul.tabs-content.contained
-      -#%li#tweepsTab
-        .row
-          %p.subheader
-            =t :app_name
-            is more fun with your
-            = @followers_count
-            tweeps. Invite some...
-        .row
-          .six.columns.centered
-            %a.button.radius.invite Invite
-      %li#challengeTab.active
-        .row
-          .twelve.columns
-            %p.subheader
-              1. Choose an opponent
-        .row
-          .twelve.columns
-            .row.collapse
-              .twelve.columns.centered
-                %a.button Random
-            .row.collapse
-              .twelve.columns.centered
-                or
-            .row.collapse
-              .two.mobile-one.columns
-                %span.prefix @
-              .eight.mobile-two.columns
-                %input{:type => "text"}
-              .two.mobile-one.columns
-                %a.button.expand.postfix Search
-        .row
-          .twelve.columns
-            %p.subheader
-              2. Fight!
+    .opponent.active
+      .row.title
+        .twelve.columns
+          %h4.subheader
+            1. Choose an opponent
+      .row
+        .twelve.columns
+          .row.collapse
+            .twelve.columns.centered
+              %a.button Random
+          .row.spacer
+            .twelve.columns.centered
+              %br
+              or
+              %br
+              %br
+          .row.collapse.spacer
+            .ten.mobile-three.columns
+              %input#search{:type => "text"}
+            .two.mobile-one.columns
+              %a.button.expand.postfix Choose
+    .invite.inactive
+      .row
+        .twelve.columns
+          %h4.subheader
+            2. Invite!
+    .fight.inactive
+      .row
+        .twelve.columns
+          %h4.subheader
+            3. Fight!
+:javascript
+  $(function() {
+  		var friends = #{session[:friends].to_json.html_safe};
+
+  		$("#search").autocomplete({
+  			minLength: 2,
+  			source: function( request, response ) {
+  		        var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), "i");
+  		        response($.grep(friends, function(value) {
+  		            return matcher.test(value.value)
+  		                || matcher.test(value.label);
+  		        }));
+  			}
+  		}).data( "autocomplete" )._renderItem = function( ul, item ) {
+  		    return $( "<li></li>" )
+            			.data( "item.autocomplete", item )
+            			.append( "<a><img src='https://api.twitter.com/1/users/profile_image/" + item.value  + "'/><strong>@" + item.value + "</strong><br>" + item.label + "</a>" )
+            			.appendTo( ul );
+  		};
+  });

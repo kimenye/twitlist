@@ -59,7 +59,7 @@
 // $inputFontSize: 14px;
 // $inputBgColor: #fff;
 // $inputFocusBgColor: darken(#fff, 2%);
-// $inputBorderColor: darken(#fff, 20%);
+$inputBorderColor: darken(#fff, 20%);
 // $inputFocusBorderColor: darken(#fff, 30%);
 // $inputBorderStyle: solid;
 // $inputBorderWidth: 1px;
@@ -243,3 +243,9 @@
 // http://www.modularscale.com by Tim Brown
 // https://github.com/scottkellum/modular-scale by scottkellum
 @import 'foundation';
+
+
+.ui-menu-item {
+  border: 1px solid $inputBorderColor;
+  border-top: none;
+}

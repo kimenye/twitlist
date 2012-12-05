@@ -61,6 +61,7 @@ class AuthenticationsController < Devise::OmniauthCallbacksController
 
   def save_to_session(omniauth)
     session[:credentials] = omniauth[:credentials]
+    session[:credentials][:nickname] = omniauth["info"]["nickname"]
   end
 
   def create_new_omniauth_user(omniauth)

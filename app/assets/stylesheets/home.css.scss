@@ -37,3 +37,15 @@ a.imglink:hover {
 .current_user {
   text-align: right;
 }
+
+.active {
+  min-height: 300px;
+}
+
+.inactive {
+  opacity: 0.3;
+}
+
+.ui-autocomplete img {
+  float: left;
+}
